@@ -1,2 +1,2 @@
 # advent-calendar
-a simply advent calendar
+a simple advent calendar
