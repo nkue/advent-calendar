@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2c3e50;
+  padding: 20px;
+}
+
+.advent-calendar {
+  width: 100%;
+  background: #34495e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.door {
+  position: relative;
+  perspective: 1000px;
+  aspect-ratio: 1;
+}
+
+.door-front,
+.door-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  border-radius: 5px;
+  transition: transform 0.6s;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+.door-front {
+  background: #e74c3c;
+  transform: rotateY(0deg);
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.door-back {
+  background: #27ae60;
+  transform: rotateY(180deg);
+  font-size: 2em;
+}
+
+.door-checkbox {
+  display: none;
+}
+
+.day > input:checked + .door > .door-front {
+  transform: rotateY(180deg);
+}
+
+.day > input:checked + .door > .door-front + .door-back {
+  transform: rotateY(360deg);
+}
+
+@media (max-width: 600px) {
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
